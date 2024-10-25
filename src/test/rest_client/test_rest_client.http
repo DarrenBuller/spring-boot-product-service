@@ -1,0 +1,13 @@
+@host=localhost:8080
+GET http://{{host}}/api/product
+
+### create
+POST http://{{host}}/api/product HTTP/1.1
+content-type: application/json
+
+{
+    "name": "iphone 18",
+    "skuCode": "fafafa",
+    "description": "do stuff",
+    "price": "11.22"
+}

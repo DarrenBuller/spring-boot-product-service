@@ -37,7 +37,8 @@
 				"vmware.vscode-boot-dev-pack",
 				"vscjava.vscode-java-pack",
 				"formulahendry.vscode-mysql",
-				"humao.rest-client"
+				"humao.rest-client",
+				"GitHub.vscode-github-actions"
 			]
 		}
 	}

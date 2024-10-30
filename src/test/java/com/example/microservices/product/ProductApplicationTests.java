@@ -9,11 +9,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpStatus;
 import org.testcontainers.containers.MongoDBContainer;
 
 import com.example.microservices.product.dto.ProductRequest;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -69,5 +71,18 @@ class ProductApplicationTests {
 				.then()
 				.log().all()
 				.statusCode(200);
+	}
+
+	@Test
+	public void validateSwaggerEndpointReturnsOpenAPIResponse() throws Exception {
+		var response = RestAssured.given()
+				.when()
+				.get("/api-docs")
+				.then()
+				.log().all()
+				.contentType(ContentType.JSON)
+				.statusCode(HttpStatus.OK.value())
+				.body("openapi", Matchers.notNullValue());
+		System.out.println("Response Body is " + response.extract().body().asString());
 	}
 }

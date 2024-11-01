@@ -12,7 +12,6 @@ import com.example.microservices.product.dto.ProductResponse;
 import com.example.microservices.product.service.ProductService;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
